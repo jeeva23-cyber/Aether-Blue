@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResolveAI — Enterprise Resolution & Grounding Platform</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans, Outfit, & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-skyblue">
+
+  <div class="app-layout">
+    
+    <!-- Compact Navigation Sidebar -->
+    <aside class="main-nav-sidebar">
+      <div class="brand">
+        <div class="logo-icon"><i data-lucide="sparkles"></i></div>
+        <div>
+          <h1 class="brand-title">ResolveAI</h1>
+          <span class="brand-subtitle">Resolution Platform 2.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <button id="nav-dashboard" class="nav-link active" onclick="navigateTo('dashboard')">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+        </button>
+        <button id="nav-tickets" class="nav-link" onclick="navigateTo('tickets')">
+          <i data-lucide="inbox"></i>
+          <span>AI Workbench</span>
+          <span class="nav-badge" id="nav-ticket-count">3</span>
+        </button>
+        <button id="nav-customers" class="nav-link" onclick="navigateTo('customers')">
+          <i data-lucide="users"></i>
+          <span>Customer 360°</span>
+        </button>
+        <button id="nav-aiops" class="nav-link" onclick="navigateTo('aiops')">
+          <i data-lucide="cpu"></i>
+          <span>AI Decision Lab</span>
+        </button>
+        <button id="nav-customer-portal" class="nav-link" onclick="navigateTo('customer-portal')">
+          <i data-lucide="user-circle"></i>
+          <span>Customer Portal</span>
+          <span class="portal-badge">Live</span>
+        </button>
+        <button id="nav-supervisor" class="nav-link" onclick="navigateTo('supervisor')">
+          <i data-lucide="shield"></i>
+          <span>Supervisor Console</span>
+        </button>
+        <button id="nav-knowledge" class="nav-link" onclick="navigateTo('knowledge')">
+          <i data-lucide="book-open"></i>
+          <span>Knowledge Base</span>
+        </button>
+        <button id="nav-settings" class="nav-link" onclick="navigateTo('settings')">
+          <i data-lucide="settings"></i>
+          <span>AI Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="agent-profile">
+          <div class="agent-avatar" id="sidebar-avatar">K</div>
+          <div class="agent-info">
+            <span class="agent-name" id="sidebar-user-name">Kumar</span>
+            <span class="agent-role" id="sidebar-user-role">Level-2 Specialist</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Stage -->
+    <div class="content-wrapper">
+      
+      <!-- Compact Top Header -->
+      <header class="top-header">
+        <div class="page-title-box">
+          <h2 id="current-page-title">Executive Dashboard</h2>
+          <span class="page-subtitle" id="current-page-subtitle">Evidence-grounded resolution pipeline & compliance oversight</span>
+        </div>
+
+        <div class="header-right">
+          <!-- Active Role Switcher -->
+          <div class="role-selector-dropdown">
+            <i data-lucide="user-check"></i>
+            <select id="role-select" onchange="switchActiveRole(this.value)" title="Active Persona / Authorization Scope">
+              <option value="agent" selected>🎧 Role: Support Agent (L-2)</option>
+              <option value="supervisor">🛡️ Role: Operations Supervisor</option>
+              <option value="knowledge_manager">📚 Role: Knowledge Curator</option>
+              <option value="customer">👤 Role: Subscriber / Customer</option>
+            </select>
+          </div>
+
+          <!-- Theme Switcher Selector -->
+          <div class="theme-selector-dropdown">
+            <i data-lucide="palette"></i>
+            <select id="theme-select" onchange="changeTheme(this.value)" title="Choose Color Theme">
+              <option value="skyblue" selected>🎨 Sky Blue + Violet</option>
+              <option value="mint">🎨 Mint + Navy + White</option>
+              <option value="peach">🎨 Peach + Purple</option>
+              <option value="cyan">🎨 Cyan + Dark Navy</option>
+              <option value="cream">🎨 Cream + Green</option>
+            </select>
+          </div>
+
+          <div class="global-search">
+            <i data-lucide="search"></i>
+            <input type="text" id="global-search-input" placeholder="Search tickets, customer, KB..." onkeyup="handleGlobalSearch()">
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE 1: EXECUTIVE DASHBOARD OVERVIEW -->
+      <section id="page-dashboard" class="page-view">
+        <div class="metrics-grid">
+          <div class="card metric-card">
+            <div class="metric-icon icon-green"><i data-lucide="check-circle-2"></i></div>
+            <div class="metric-data">
+              <span class="m-label">First Contact Resolution (FCR)</span>
+              <h3 class="m-val">84.2%</h3>
+              <span class="m-trend trend-up"><i data-lucide="info"></i> Synthetic Benchmark (N=100)</span>
+            </div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="metric-icon icon-blue"><i data-lucide="clock"></i></div>
+            <div class="metric-data">
+              <span class="m-label">Average Handling Time (AHT)</span>
+              <h3 class="m-val">1m 45s</h3>
+              <span class="m-trend trend-up"><i data-lucide="trending-down"></i> -65% vs manual baseline</span>
+            </div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="metric-icon icon-purple"><i data-lucide="zap"></i></div>
+            <div class="metric-data">
+              <span class="m-label">Citation Grounding Validity</span>
+              <h3 class="m-val">96.8%</h3>
+              <span class="m-trend trend-up"><i data-lucide="shield-check"></i> Evidence Verified</span>
+            </div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="metric-icon icon-red"><i data-lucide="shield-alert"></i></div>
+            <div class="metric-data">
+              <span class="m-label">Safe Escalation Rate</span>
+              <h3 class="m-val">100%</h3>
+              <span class="m-trend trend-up"><i data-lucide="check"></i> 6-Part Handover Spec</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-widgets-grid">
+          
+          <!-- AI Decision Distribution Card -->
+          <div class="card widget-card">
+            <div class="card-header">
+              <h3><i data-lucide="pie-chart"></i> Controlled AI Decision Distribution</h3>
+              <span class="badge-tag">Synthetic Benchmark</span>
+            </div>
+            <div class="decision-breakdown-list">
+              <div class="decision-row">
+                <div class="d-info">
+                  <span class="d-pill pill-resolve">🟢 RESOLVE (Grounded Routine)</span>
+                  <span class="d-count">21 Tickets (70%)</span>
+                </div>
+                <div class="progress-bar"><div class="bar-fill fill-green" style="width: 70%;"></div></div>
+              </div>
+
+              <div class="decision-row">
+                <div class="d-info">
+                  <span class="d-pill pill-ask">🟡 ASK CUSTOMER (Missing Info)</span>
+                  <span class="d-count">6 Tickets (20%)</span>
+                </div>
+                <div class="progress-bar"><div class="bar-fill fill-amber" style="width: 20%;"></div></div>
+              </div>
+
+              <div class="decision-row">
+                <div class="d-info">
+                  <span class="d-pill pill-escalate">🔴 ESCALATE (Physical Fault / Complex)</span>
+                  <span class="d-count">3 Tickets (10%)</span>
+                </div>
+                <div class="progress-bar"><div class="bar-fill fill-red" style="width: 10%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenario Launcher Card -->
+          <div class="card widget-card">
+            <div class="card-header">
+              <h3><i data-lucide="play-circle"></i> Policy-Calibrated Scenarios</h3>
+              <span class="badge-tag">1-Click Test</span>
+            </div>
+            <div class="scenario-buttons-stack">
+              <button class="scenario-btn s-resolve" onclick="launchScenario('Arun')">
+                <div class="s-icon"><i data-lucide="wifi"></i></div>
+                <div>
+                  <strong>Preset 1: Arun Kumar (Broadband Outage)</strong>
+                  <p>Triggers 🟢 RESOLVE • Grounded restart response with KB-102 citation</p>
+                </div>
+              </button>
+
+              <button class="scenario-btn s-ask" onclick="launchScenario('Priya')">
+                <div class="s-icon"><i data-lucide="credit-card"></i></div>
+                <div>
+                  <strong>Preset 2: Priya Sharma (Payment Pending)</strong>
+                  <p>Triggers 🟡 ASK CUSTOMER • Requests missing Transaction Reference ID</p>
+                </div>
+              </button>
+
+              <button class="scenario-btn s-escalate" onclick="launchScenario('John')">
+                <div class="s-icon"><i data-lucide="alert-triangle"></i></div>
+                <div>
+                  <strong>Preset 3: John Doe (Fiber Severed)</strong>
+                  <p>Triggers 🔴 ESCALATE • Generates full 6-Part Handover Context Package</p>
+                </div>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PAGE 2: TICKET WORKBENCH & LIVE AI RAG PROMPT -->
+      <section id="page-tickets" class="page-view hidden">
+        
+        <!-- Live AI Query Input Bar -->
+        <div class="card ai-prompt-bar">
+          <div class="ai-prompt-input-wrapper">
+            <i data-lucide="sparkles"></i>
+            <input type="text" id="live-ai-prompt" placeholder="Type ANY customer query to trace evidence retrieval and decision engine..." onkeydown="if(event.key==='Enter') runLiveAIQuery()">
+            <button class="btn btn-primary btn-sm" onclick="runLiveAIQuery()">
+              <i data-lucide="zap"></i> Run AI Engine
+            </button>
+          </div>
+        </div>
+
+        <div class="workbench-layout">
+          
+          <!-- Queue Sidebar -->
+          <aside class="card ticket-sidebar">
+            <div class="sidebar-header">
+              <h3>Ticket Queue</h3>
+              <span class="queue-count" id="queue-total">3 Tickets</span>
+            </div>
+            <div class="queue-filter-buttons">
+              <button class="q-btn active" onclick="filterQueue('all')">All</button>
+              <button class="q-btn btn-r" onclick="filterQueue('RESOLVE')">🟢 Resolve</button>
+              <button class="q-btn btn-a" onclick="filterQueue('ASK_CUSTOMER')">🟡 Ask</button>
+              <button class="q-btn btn-e" onclick="filterQueue('ESCALATE')">🔴 Escalate</button>
+            </div>
+            <div class="queue-list" id="ticket-queue-list">
+              <!-- Dynamically populated tickets -->
+            </div>
+          </aside>
+
+          <!-- Main Chat & AI Panel Stage -->
+          <div class="workbench-main-stage">
+            
+            <!-- Conversation Thread Column -->
+            <div class="card chat-card">
+              <div class="chat-header">
+                <div class="chat-customer-info">
+                  <div class="c-avatar-sm" id="chat-customer-avatar">A</div>
+                  <div>
+                    <h4 id="chat-customer-name">Arun Kumar</h4>
+                    <span class="c-plan-id" id="chat-customer-sub">Fiber 200 Mbps • CUST-1001</span>
+                  </div>
+                </div>
+                <div class="chat-actions">
+                  <span class="badge-status status-paid" id="chat-state-badge">RESOLVED_PENDING_APPROVAL</span>
+                </div>
+              </div>
+
+              <div class="chat-thread" id="chat-thread-container">
+                <!-- Message bubbles -->
+              </div>
+            </div>
+
+            <!-- AI Resolution & 6-Part Handover Column -->
+            <div class="card ai-resolution-card">
+              <div class="card-header">
+                <div class="ai-header-left">
+                  <i data-lucide="brain-circuit"></i>
+                  <h3>AI Grounded Resolution</h3>
+                </div>
+                <div class="ai-header-right">
+                  <span class="badge-decision badge-case-resolve" id="decision-badge">🟢 CASE 1 — RESOLVE</span>
+                  <span class="conf-score" id="confidence-val">94% confidence</span>
+                </div>
+              </div>
+
+              <!-- VIEW A: CASE 1 — RESOLVE -->
+              <div id="case-view-resolve" class="case-view-content">
+                <div class="ai-draft-box">
+                  <div class="draft-header">
+                    <span>Evidence-Grounded Draft Response:</span>
+                    <span class="verified-tag"><i data-lucide="shield-check"></i> Citations Validated</span>
+                  </div>
+                  <textarea id="ai-draft-textarea" class="ai-draft-text" rows="7"></textarea>
+                </div>
+
+                <div class="citations-box">
+                  <div class="citations-title"><i data-lucide="book-marked"></i> Approved Knowledge Base Citations:</div>
+                  <div class="citations-list" id="citations-list-container">
+                    <span class="citation-pill">KB-102: §2 WAN Light Indicators (96% similarity)</span>
+                  </div>
+                </div>
+
+                <div class="action-buttons-row">
+                  <button class="btn btn-primary" onclick="approveResolution()">
+                    <i data-lucide="check"></i> Approve & Send to Customer
+                  </button>
+                  <button class="btn btn-secondary" onclick="editResolution()">
+                    <i data-lucide="edit-3"></i> Edit Draft
+                  </button>
+                </div>
+              </div>
+
+              <!-- VIEW B: CASE 2 — ASK CUSTOMER -->
+              <div id="case-view-ask" class="case-view-content hidden">
+                <div class="ask-box">
+                  <div class="ask-header">
+                    <i data-lucide="help-circle"></i>
+                    <strong>Mandatory Parameter Missing:</strong>
+                  </div>
+                  <p class="ask-prompt" id="ask-prompt-display">Please provide your Payment Transaction Reference ID (UTR number) from your bank confirmation.</p>
+                </div>
+
+                <div class="action-buttons-row">
+                  <button class="btn btn-warning" onclick="requestInformation()">
+                    <i data-lucide="send"></i> Dispatch Targeted Question
+                  </button>
+                  <button class="btn btn-secondary" onclick="forceEscalate()">
+                    <i data-lucide="arrow-up-right"></i> Escalate to Specialist
+                  </button>
+                </div>
+              </div>
+
+              <!-- VIEW C: CASE 3 — ESCALATE (6-PART HANDOVER SPECIFICATION) -->
+              <div id="case-view-escalate" class="case-view-content hidden">
+                <div class="handover-spec-card">
+                  <div class="handover-spec-header">
+                    <i data-lucide="shield-alert"></i>
+                    <h4>6-Part Structured Handover Specification</h4>
+                    <span class="spec-version">v2.0 Compliant</span>
+                  </div>
+                  
+                  <div class="handover-parts-grid">
+                    <div class="ho-part">
+                      <span class="ho-part-title">1. Issue (Reported Problem):</span>
+                      <p id="ho-issue-val" class="ho-part-content">Fiber cable severed by construction excavator.</p>
+                    </div>
+
+                    <div class="ho-part">
+                      <span class="ho-part-title">2. Customer Status:</span>
+                      <p id="ho-standing-val" class="ho-part-content">John Doe (CUST-1003) | Plan: Fiber 500M | Billing: Paid</p>
+                    </div>
+
+                    <div class="ho-part">
+                      <span class="ho-part-title">3. What We Know (Established Facts):</span>
+                      <ul id="ho-know-val" class="ho-list">
+                        <li>Physical drop cable damage detected outside premise</li>
+                        <li>Optical signal power reads 0 dBm (No Light)</li>
+                      </ul>
+                    </div>
+
+                    <div class="ho-part">
+                      <span class="ho-part-title">4. What Was Tried (Actions & Results):</span>
+                      <ul id="ho-tried-val" class="ho-list">
+                        <li>Automated line test confirmed physical break</li>
+                      </ul>
+                    </div>
+
+                    <div class="ho-part">
+                      <span class="ho-part-title">5. AI Assessment:</span>
+                      <p id="ho-assessment-val" class="ho-part-content">Outside self-service capabilities. Physical splicing required.</p>
+                    </div>
+
+                    <div class="ho-part">
+                      <span class="ho-part-title">6. Recommended Action:</span>
+                      <p id="ho-action-val" class="ho-part-content highlight-action">Assign Level-2 Field Splicing Specialist immediately.</p>
+                    </div>
+                  </div>
+
+                  <p class="ho-disclaimer">
+                    <i data-lucide="info"></i>
+                    <em>The handover reduces unnecessary repetition by transferring the conversation history, account context, evidence, troubleshooting actions, and AI assessment. The receiving agent may still verify identity and ask follow-up questions.</em>
+                  </p>
+                </div>
+
+                <div class="action-buttons-row">
+                  <button class="btn btn-danger" onclick="claimEscalatedTicket()">
+                    <i data-lucide="user-check"></i> Claim Escalated Ticket
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Customer Context Sidebar -->
+            <div class="card customer-context-card">
+              <div class="card-header">
+                <h3>Customer 360° Context</h3>
+                <span class="badge-tag" id="q-cust-id">CUST-1001</span>
+              </div>
+              <div class="cust-profile-box">
+                <div class="c-avatar-lg" id="q-cust-avatar">A</div>
+                <div>
+                  <h4 id="q-cust-name">Arun Kumar</h4>
+                  <span class="c-email" id="q-cust-email">arun.kumar@example.com</span>
+                </div>
+              </div>
+              
+              <div class="c-details-group">
+                <div class="c-row"><span>Active Plan:</span><strong id="q-cust-plan">Fiber 200 Mbps</strong></div>
+                <div class="c-row"><span>Billing Standing:</span><span class="status-paid" id="q-cust-billing">Paid</span></div>
+                <div class="c-row"><span>Router Model:</span><strong id="q-cust-router">NexFiber Wi-Fi 6</strong></div>
+                <div class="c-row"><span>WAN Light:</span><span class="val-warning" id="q-cust-wan">Blinking Red</span></div>
+                <div class="c-row"><span>Optical Signal:</span><strong id="q-cust-signal">-28 dBm</strong></div>
+                <div class="c-row"><span>Data Freshness:</span><span class="status-paid" style="font-size:0.75rem;"><i data-lucide="activity"></i> Live (4s ago)</span></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PAGE 3: CUSTOMER 360 DIRECTORY -->
+      <section id="page-customers" class="page-view hidden">
+        <div class="card page-control-card">
+          <div class="card-header">
+            <h3><i data-lucide="users"></i> Customer 360° Directory</h3>
+            <span class="badge-tag">Subscriber Telemetry</span>
+          </div>
+          <div class="search-filter-row">
+            <input type="text" id="cust-dir-search" placeholder="Search by customer name, email, account ID..." onkeyup="filterCustomerDirectory()">
+          </div>
+        </div>
+
+        <div class="customers-grid" id="customers-grid-container">
+          <!-- Dynamically populated customer 360 cards -->
+        </div>
+      </section>
+
+      <!-- PAGE 4: AI DECISION & RAG LAB -->
+      <section id="page-aiops" class="page-view hidden">
+        <div class="aiops-container">
+          
+          <div class="card aiops-control-card">
+            <div class="card-header">
+              <h3><i data-lucide="activity"></i> Interactive Evidence & Decision Trace</h3>
+              <span class="badge-tag">Evidence-Based Pipeline</span>
+            </div>
+            
+            <div class="aiops-input-row">
+              <div class="aiops-field flex-grow">
+                <label>Customer Message:</label>
+                <input type="text" id="aiops-query-input" value="My router WAN light is blinking red and connection dropped." placeholder="Type query to trace AI reasoning...">
+              </div>
+
+              <div class="aiops-field">
+                <label>Subscriber Profile:</label>
+                <select id="aiops-customer-select" onchange="runAIOpsTrace()">
+                  <option value="CUST-1001">Arun Kumar (Fiber 200M - Degraded WAN)</option>
+                  <option value="CUST-1002">Priya Sharma (GigaFiber - Pending Payment)</option>
+                  <option value="CUST-1003">John Doe (Fiber 500M - Severed Cable)</option>
+                  <option value="CUST-1004">Sarah Jenkins (5G Mobile Ultra)</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary" onclick="runAIOpsTrace()">
+                <i data-lucide="play"></i> Execute Trace
+              </button>
+            </div>
+          </div>
+
+          <div class="aiops-grid">
+            <div class="card aiops-card">
+              <div class="card-header">
+                <h4><i data-lucide="database"></i> 1. RAG Vector Retrieval</h4>
+                <span class="badge-status status-paid" id="trace-rag-status">KB-102 Top Match</span>
+              </div>
+              <div class="aiops-step-body">
+                <div class="kb-match-item">
+                  <div class="kb-match-header">
+                    <strong>KB-102: Broadband Troubleshooting</strong>
+                    <span class="match-score" id="trace-match-score">96% Similarity</span>
+                  </div>
+                  <p class="kb-match-snippet" id="trace-match-snippet">
+                    "WAN Light Indicators: Solid Green = active; Blinking Red = optical signal loss; Power cycle router for 30s..."
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card aiops-card">
+              <div class="card-header">
+                <h4><i data-lucide="user-check"></i> 2. Telemetry Context Injection</h4>
+                <span class="badge-status status-paid" id="trace-cust-status">Active Subscriber</span>
+              </div>
+              <div class="aiops-step-body">
+                <div class="telemetry-trace-grid" id="trace-telemetry-grid">
+                  <!-- Telemetry pills -->
+                </div>
+              </div>
+            </div>
+
+            <div class="card aiops-card full-span">
+              <div class="card-header">
+                <h4><i data-lucide="cpu"></i> 3. Decision Engine Synthesis & Grounded Output</h4>
+                <span class="badge-decision badge-case-resolve" id="trace-decision-badge">🟢 CASE 1 — RESOLVE</span>
+              </div>
+              <div class="aiops-step-body">
+                <div class="synthesis-output-box">
+                  <div class="synthesis-header">
+                    <span>Evidence-Based Decision Trace:</span>
+                    <span id="trace-conf-display" style="font-weight:700; color:var(--resolve-color);">Confidence: 94% • Grounded Fact-Checked</span>
+                  </div>
+                  <div class="synthesis-text" id="trace-output-text">
+                    <!-- Synthesis text -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PAGE 5: CUSTOMER LOGIN & SELF-SERVICE PORTAL -->
+      <section id="page-customer-portal" class="page-view hidden">
+        
+        <!-- View A: Customer Login & Registration Screen (When Not Logged In) -->
+        <div id="customer-login-view" class="customer-auth-container">
+          <div class="card auth-card">
+            
+            <div class="auth-header">
+              <div class="auth-icon"><i data-lucide="shield-check"></i></div>
+              <h3>Subscriber Portal</h3>
+              <p>Sign in to manage your broadband & mobile subscription or request instant AI problem resolution.</p>
+            </div>
+
+            <!-- Auth Switcher Tabs -->
+            <div class="auth-tabs">
+              <button id="auth-tab-login-btn" class="auth-tab-btn active" onclick="switchAuthTab('login')">
+                <i data-lucide="log-in"></i> Existing Subscriber Login
+              </button>
+              <button id="auth-tab-register-btn" class="auth-tab-btn" onclick="switchAuthTab('register')">
+                <i data-lucide="user-plus"></i> New Subscriber Registration
+              </button>
+            </div>
+
+            <!-- TAB 1: Existing Subscriber Login -->
+            <div id="auth-login-panel">
+              <div class="demo-login-quick-bar">
+                <span class="demo-quick-label">⚡ 1-Click Demo Login (Select Any Subscriber):</span>
+                <div class="demo-user-chips" id="demo-user-chips-container">
+                  <!-- Populated from JS -->
+                </div>
+              </div>
+
+              <form class="auth-form" onsubmit="event.preventDefault(); loginWithForm();">
+                <div class="form-group">
+                  <label>Account ID or Registered Mobile Phone</label>
+                  <div class="input-with-icon">
+                    <i data-lucide="phone"></i>
+                    <input type="text" id="login-account-id" value="CUST-1001" placeholder="e.g. CUST-1001 or +91 98765 43210" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Security PIN / Password</label>
+                  <div class="input-with-icon">
+                    <i data-lucide="lock"></i>
+                    <input type="password" id="login-password" value="••••••" placeholder="Enter 6-digit subscriber PIN" required>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                  <i data-lucide="log-in"></i> Sign In to Subscriber Portal
+                </button>
+              </form>
+            </div>
+
+            <!-- TAB 2: New Subscriber Registration -->
+            <div id="auth-register-panel" class="hidden">
+              <form class="auth-form" onsubmit="event.preventDefault(); registerNewCustomer();">
+                <div class="form-group">
+                  <label>Full Customer Name</label>
+                  <div class="input-with-icon">
+                    <i data-lucide="user"></i>
+                    <input type="text" id="reg-name" placeholder="e.g. Rajesh Patel" required>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-with-icon">
+                      <i data-lucide="mail"></i>
+                      <input type="email" id="reg-email" placeholder="rajesh@example.com" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Mobile Number</label>
+                    <div class="input-with-icon">
+                      <i data-lucide="phone"></i>
+                      <input type="text" id="reg-phone" placeholder="+91 98765 00000" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Choose Broadband / Mobile Plan</label>
+                  <select id="reg-plan" class="portal-select">
+                    <option value="Fiber 200 Mbps">Fiber 200 Mbps ($59.99/mo)</option>
+                    <option value="Fiber 500 Mbps">Fiber 500 Mbps ($79.99/mo)</option>
+                    <option value="GigaFiber 1 Gbps">GigaFiber 1 Gbps ($129.99/mo)</option>
+                    <option value="Unlimited 5G Mobile Ultra">Unlimited 5G Mobile Ultra ($45.00/mo)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Installation Address</label>
+                  <div class="input-with-icon">
+                    <i data-lucide="map-pin"></i>
+                    <input type="text" id="reg-address" placeholder="e.g. Flat 402, Green Valley Apartments" required>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                  <i data-lucide="user-plus"></i> Create Account & Enter Portal
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- View B: Logged-in Customer Self-Service Portal & Problem Hub -->
+        <div id="customer-portal-dashboard" class="customer-portal-layout hidden">
+          
+          <!-- Subscriber Welcome Bar -->
+          <div class="card portal-subscriber-bar">
+            <div class="sub-info-left">
+              <div class="sub-avatar-circle" id="portal-user-avatar">A</div>
+              <div>
+                <div class="sub-name-row">
+                  <h3 id="portal-user-name">Arun Kumar</h3>
+                  <span class="badge-status status-paid" id="portal-user-plan">Fiber 200 Mbps</span>
+                  <span class="c-id" id="portal-user-id">CUST-1001</span>
+                </div>
+                <span class="sub-contact" id="portal-user-contact">arun.kumar@example.com • +91 98765 43210</span>
+              </div>
+            </div>
+
+            <div class="sub-actions-right">
+              <button class="btn btn-primary btn-sm" onclick="switchPortalTab('report')">
+                <i data-lucide="plus-circle"></i> Report a Problem
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="logoutCustomer()">
+                <i data-lucide="log-out"></i> Switch User / Logout
+              </button>
+            </div>
+          </div>
+
+          <!-- Customer Sub-Navigation Tabs -->
+          <div class="portal-nav-bar">
+            <button id="pnav-requests" class="pnav-btn active" onclick="switchPortalTab('requests')">
+              <i data-lucide="ticket"></i>
+              <span>My Problem Requests</span>
+              <span class="pnav-badge" id="portal-requests-count">1</span>
+            </button>
+            <button id="pnav-report" class="pnav-btn" onclick="switchPortalTab('report')">
+              <i data-lucide="alert-circle"></i>
+              <span>Report a Problem (AI Assistant)</span>
+            </button>
+            <button id="pnav-chat" class="pnav-btn" onclick="switchPortalTab('chat')">
+              <i data-lucide="message-square"></i>
+              <span>24/7 AI Support Chat</span>
+            </button>
+          </div>
+
+          <!-- Main 2-Column Portal Stage -->
+          <div class="portal-main-grid">
+            
+            <!-- Left Column: Dynamic Content Tab Switcher -->
+            <div class="portal-content-col">
+              
+              <!-- SUB-VIEW 1: Customer Problem Requests & AI Diagnoses List -->
+              <div id="portal-tab-requests" class="portal-sub-view">
+                <div class="card portal-card">
+                  <div class="card-header">
+                    <h4><i data-lucide="list-checks"></i> Active & Past Problem Requests</h4>
+                    <span class="badge-tag">State Machine Governed</span>
+                  </div>
+
+                  <div class="portal-requests-list" id="portal-requests-list">
+                    <!-- Populated dynamically -->
+                  </div>
+                </div>
+
+                <!-- Selected Ticket AI Resolution Details Pane -->
+                <div class="card portal-card" id="portal-ticket-detail-card">
+                  <div class="card-header">
+                    <h4><i data-lucide="sparkles"></i> AI Problem Diagnosis & Resolution Steps</h4>
+                    <span id="portal-detail-status-badge" class="badge-decision badge-case-resolve">🟢 RESOLVED</span>
+                  </div>
+                  <div class="portal-detail-body" id="portal-ticket-detail-body">
+                    <p style="color:var(--text-muted); font-size:0.85rem;">Select any problem request from the list above to view the grounded AI diagnosis, troubleshooting instructions, or technician notes.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SUB-VIEW 2: Report a Problem Form -->
+              <div id="portal-tab-report" class="portal-sub-view hidden">
+                <div class="card portal-card">
+                  <div class="card-header">
+                    <h4><i data-lucide="file-plus"></i> Submit Problem for Instant AI Resolution</h4>
+                    <span class="badge-tag">Grounded RAG Pipeline</span>
+                  </div>
+                  
+                  <form class="portal-problem-form" onsubmit="event.preventDefault(); submitProblemFromPortal();">
+                    
+                    <div class="form-row-2">
+                      <div class="form-group">
+                        <label>Problem Category</label>
+                        <select id="prob-category" class="portal-select">
+                          <option value="Broadband Connection">📶 Broadband Connection / Speed Loss</option>
+                          <option value="Billing & Payments">💳 Billing Statement / Payment Dispute</option>
+                          <option value="Router & Hardware">🔌 Router Hardware / WAN Light Red</option>
+                          <option value="Mobile & Roaming">📱 Mobile 5G / Roaming Activation</option>
+                          <option value="Physical Line Damage">⚠️ Physical Drop Cable Cut / Line Break</option>
+                          <option value="Other Inquiries">❓ Other Support Inquiries</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Router WAN Light Indicator</label>
+                        <select id="prob-led" class="portal-select">
+                          <option value="Blinking Red">🔴 Blinking Red (Optical Loss)</option>
+                          <option value="Solid Green">🟢 Solid Green (Connected)</option>
+                          <option value="Completely Off">⚫ Completely Off (No Power/Break)</option>
+                          <option value="Amber Flashing">🟡 Amber Flashing (Connecting)</option>
+                          <option value="N/A - Mobile eSIM">📱 N/A (Mobile Service)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Problem Summary / Subject</label>
+                      <input type="text" id="prob-subject" class="portal-input" placeholder="e.g. Internet not working since morning, router red light" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Detailed Description of the Issue</label>
+                      <textarea id="prob-description" class="portal-textarea" rows="4" placeholder="Describe what happened, error messages, or what you have tried so far..." required></textarea>
+                    </div>
+
+                    <div class="form-row-2">
+                      <div class="form-group">
+                        <label>Urgency Level</label>
+                        <select id="prob-urgency" class="portal-select">
+                          <option value="Normal">Normal — Standard Support</option>
+                          <option value="High">High — Working from Home Impacted</option>
+                          <option value="Critical">Critical — Complete Physical Outage</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group submit-group">
+                        <button type="submit" class="btn btn-primary btn-block">
+                          <i data-lucide="zap"></i> Submit for Instant AI Diagnosis
+                        </button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+
+              <!-- SUB-VIEW 3: 24/7 AI Troubleshooting Chat -->
+              <div id="portal-tab-chat" class="portal-sub-view hidden">
+                <div class="card customer-chat-card">
+                  <div class="card-header">
+                    <div class="portal-chat-title">
+                      <i data-lucide="bot"></i>
+                      <h4>Live AI Resolution Assistant</h4>
+                      <span class="rag-badge"><i data-lucide="zap"></i> Grounded in KB-101..105</span>
+                    </div>
+                    <span class="status-chip">Direct Assistant Connection</span>
+                  </div>
+
+                  <div class="portal-chat-messages" id="portal-chat-messages">
+                    <!-- Chat bubbles -->
+                  </div>
+
+                  <div class="portal-quick-chips">
+                    <span class="quick-chips-label">Quick Prompts:</span>
+                    <button class="chip-btn" onclick="sendQuickPrompt('My router WAN light is blinking red')">🔴 Router Red Light</button>
+                    <button class="chip-btn" onclick="sendQuickPrompt('I paid my bill yesterday via bank transfer but account shows pending')">💳 Payment Pending</button>
+                    <button class="chip-btn" onclick="sendQuickPrompt('An excavator cut my fiber drop cable outside premise')">⚠️ Severed Cable</button>
+                  </div>
+
+                  <div class="portal-chat-input-bar">
+                    <input type="text" id="portal-chat-input" placeholder="Type your issue or question to the AI assistant..." onkeydown="if(event.key==='Enter') sendCustomerPortalMessage()">
+                    <button class="btn btn-primary" onclick="sendCustomerPortalMessage()">
+                      <i data-lucide="send"></i> Send
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Column: Subscription & Telemetry Sidebar -->
+            <div class="portal-sidebar-stack">
+              
+              <div class="card portal-account-widget">
+                <div class="card-header">
+                  <h4><i data-lucide="credit-card"></i> My Subscription</h4>
+                </div>
+                <div class="c-details-group">
+                  <div class="c-row"><span>Monthly Plan:</span><strong id="portal-plan-name">Fiber 200 Mbps</strong></div>
+                  <div class="c-row"><span>Monthly Charge:</span><strong id="portal-plan-fee">$59.99 / mo</strong></div>
+                  <div class="c-row"><span>Billing Standing:</span><span class="status-paid" id="portal-plan-billing">Paid</span></div>
+                  <div class="c-row"><span>Next Billing Date:</span><strong>October 1, 2026</strong></div>
+                </div>
+              </div>
+
+              <div class="card portal-telemetry-widget">
+                <div class="card-header">
+                  <h4><i data-lucide="wifi"></i> Home Equipment Health</h4>
+                </div>
+                <div class="c-details-group">
+                  <div class="c-row"><span>Router Gateway:</span><strong id="portal-router-model">NexFiber Wi-Fi 6</strong></div>
+                  <div class="c-row"><span>WAN Light:</span><span class="val-warning" id="portal-wan-light">Blinking Red</span></div>
+                  <div class="c-row"><span>Optical Line Signal:</span><strong id="portal-signal-dbm">-28 dBm</strong></div>
+                  <div class="c-row"><span>Area Outages:</span><span class="status-paid" id="portal-outage-stat">None Recorded</span></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- PAGE 6: SUPERVISOR CONSOLE (NEW!) -->
+      <section id="page-supervisor" class="page-view hidden">
+        <div class="supervisor-grid">
+          
+          <!-- Audit Event Stream Card -->
+          <div class="card supervisor-card full-span">
+            <div class="card-header">
+              <h3><i data-lucide="shield"></i> Real-Time Immutable Audit Event Stream</h3>
+              <button class="btn btn-secondary btn-sm" onclick="fetchAuditEvents()">
+                <i data-lucide="refresh-cw"></i> Refresh Stream
+              </button>
+            </div>
+            <div class="audit-table-container">
+              <table class="audit-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp (UTC)</th>
+                    <th>Event Type</th>
+                    <th>Actor ID & Role</th>
+                    <th>Target ID & Type</th>
+                    <th>Event Details</th>
+                  </tr>
+                </thead>
+                <tbody id="audit-events-tbody">
+                  <!-- Populated from /api/audit/events -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Decision Policy Thresholds & Quality Overrides -->
+          <div class="card supervisor-card">
+            <div class="card-header">
+              <h3><i data-lucide="sliders"></i> Policy Calibration & Thresholds</h3>
+            </div>
+            <div class="settings-body">
+              <div class="setting-item">
+                <label>🟢 RESOLVE Confidence Threshold: <strong id="sup-thresh-resolve">70%</strong></label>
+                <input type="range" min="50" max="95" value="70" class="slider" oninput="document.getElementById('sup-thresh-resolve').innerText = this.value + '%'">
+              </div>
+
+              <div class="setting-item">
+                <label>🟡 ASK CUSTOMER Threshold: <strong id="sup-thresh-ask">50%</strong></label>
+                <input type="range" min="30" max="80" value="50" class="slider" oninput="document.getElementById('sup-thresh-ask').innerText = this.value + '%'">
+              </div>
+
+              <div class="setting-item">
+                <label>🛡️ Citation Grounding Minimum Support: <strong id="sup-thresh-cit">65%</strong></label>
+                <input type="range" min="40" max="90" value="65" class="slider" oninput="document.getElementById('sup-thresh-cit').innerText = this.value + '%'">
+              </div>
+            </div>
+          </div>
+
+          <!-- Quality Metrics Documentation Card -->
+          <div class="card supervisor-card">
+            <div class="card-header">
+              <h3><i data-lucide="file-check"></i> Documented Evaluation Standards</h3>
+            </div>
+            <div class="c-details-group">
+              <div class="c-row"><span>First-Contact Resolution:</span><strong>Resolved without recontact in 7 days</strong></div>
+              <div class="c-row"><span>AHT Baseline:</span><strong>Compared against 5m 00s manual baseline</strong></div>
+              <div class="c-row"><span>Grounding Method:</span><strong>Entity overlap against approved KB chunks</strong></div>
+              <div class="c-row"><span>Safe Escalation:</span><strong>100% of physical media breaks routed to L-2</strong></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PAGE 7: KNOWLEDGE BASE (RAG) STUDIO -->
+      <section id="page-knowledge" class="page-view hidden">
+        <div class="kb-studio-layout">
+          
+          <div class="card page-control-card">
+            <div class="card-header">
+              <h3><i data-lucide="book-open"></i> Knowledge Base & RAG Index</h3>
+              <span class="badge-tag">Versioned Approved Articles</span>
+            </div>
+            <div class="search-filter-row">
+              <input type="text" id="kb-semantic-input" placeholder="Semantic RAG Search: e.g. 'router WAN light red blinking', 'payment transfer verification'..." onkeyup="performRAGSearch()">
+            </div>
+          </div>
+
+          <div class="kb-articles-grid" id="kb-articles-container">
+            <!-- Dynamically rendered articles -->
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 8: AI SETTINGS & CONFIGURATION -->
+      <section id="page-settings" class="page-view hidden">
+        <div class="settings-grid">
+          
+          <div class="card settings-card">
+            <div class="card-header">
+              <h3><i data-lucide="shield-check"></i> Security & Governance Baseline</h3>
+            </div>
+            <div class="c-details-group">
+              <div class="c-row"><span>Prompt Injection Guard:</span><strong class="status-paid">Active</strong></div>
+              <div class="c-row"><span>Restricted Action Policy:</span><strong class="status-paid">Enforced (No Auto-Refunds)</strong></div>
+              <div class="c-row"><span>Data Isolation:</span><strong class="status-paid">Server-Side Verified</strong></div>
+              <div class="c-row"><span>Database Engine:</span><strong>SQLite / SQLAlchemy Transactional</strong></div>
+            </div>
+          </div>
+
+          <div class="card settings-card">
+            <div class="card-header">
+              <h3><i data-lucide="palette"></i> Application Color Theme</h3>
+            </div>
+            <div class="settings-body">
+              <div class="theme-preview-buttons">
+                <button class="theme-btn theme-btn-skyblue" onclick="changeTheme('skyblue')">
+                  <span>🎨 Sky Blue + Violet</span>
+                  <small>Bright & Futuristic AI (Default)</small>
+                </button>
+                <button class="theme-btn theme-btn-mint" onclick="changeTheme('mint')">
+                  <span>🎨 Mint + Navy + White</span>
+                  <small>Fresh & Trustworthy</small>
+                </button>
+                <button class="theme-btn theme-btn-peach" onclick="changeTheme('peach')">
+                  <span>🎨 Peach + Purple</span>
+                  <small>Vibrant Startup</small>
+                </button>
+                <button class="theme-btn theme-btn-cyan" onclick="changeTheme('cyan')">
+                  <span>🎨 Cyan + Dark Navy</span>
+                  <small>Advanced Control Center</small>
+                </button>
+                <button class="theme-btn theme-btn-cream" onclick="changeTheme('cream')">
+                  <span>🎨 Cream + Green + Charcoal</span>
+                  <small>Enterprise Elegant</small>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+[
+  {
+    "id": "TCK-8801",
+    "customer_id": "CUST-1001",
+    "customer_name": "Arun Kumar",
+    "subject": "Internet connection broken since morning",
+    "status": "pending_approval",
+    "decision_type": "RESOLVE",
+    "confidence_score": 0.94,
+    "priority": "High",
+    "created_at": "2026-09-05T08:30:00Z",
+    "updated_at": "2026-09-05T14:04:33.527829",
+    "messages": [
+      {
+        "sender": "customer",
+        "text": "My internet is not working since morning. The router light is blinking red.",
+        "timestamp": "08:30:00"
+      },
+      {
+        "sender": "customer",
+        "text": "My broadband is down",
+        "timestamp": "14:04:33"
+      }
+    ],
+    "ai_resolution": {
+      "grounded_answer": "Hello Arun Kumar,\n\nYour Fiber 200 Mbps plan is active and there is no recorded area outage.\n\nYour router WAN light is currently: **Blinking Red**.\n\nPlease restart your router (power off for 30s) and check the optical cable connection.\n\nSource: KB-102 \u2014 KB-102: Broadband Connection Troubleshooting (2. Power Cycle Sequence)",
+      "citations": [
+        {
+          "article_id": "KB-102",
+          "title": "KB-102: Broadband Connection Troubleshooting",
+          "section": "2. Power Cycle Sequence",
+          "relevance_score": 0.85
+        }
+      ],
+      "missing_info": null,
+      "handover_summary": null
+    }
+  },
+  {
+    "id": "TCK-8802",
+    "customer_id": "CUST-1002",
+    "customer_name": "Priya Sharma",
+    "subject": "Payment deducted but account status shows pending",
+    "status": "pending_approval",
+    "decision_type": "RESOLVE",
+    "confidence_score": 0.94,
+    "priority": "Medium",
+    "created_at": "2026-09-05T09:10:00Z",
+    "updated_at": "2026-09-05T14:59:00.325950",
+    "messages": [
+      {
+        "sender": "customer",
+        "text": "I paid $129.99 for my bill yesterday via bank transfer, but my account still says payment pending!",
+        "timestamp": "09:10:00"
+      },
+      {
+        "sender": "customer",
+        "text": "Provided parameter: TXN-9988220011",
+        "timestamp": "14:59:00"
+      }
+    ],
+    "ai_resolution": {
+      "grounded_answer": "Hello Priya Sharma,\n\nYour GigaFiber 1 Gbps + Ultra Mobile 5G plan is active and there is no recorded area outage.\n\nYour router WAN light is currently: **Solid Green**.\n\nPlease restart your router (power off for 30s) and check the optical cable connection.\n\nSource: KB-101 \u2014 KB-101: Account & Billing (2. Payment Issues)",
+      "citations": [
+        {
+          "article_id": "KB-101",
+          "title": "KB-101: Account & Billing",
+          "section": "2. Payment Issues",
+          "relevance_score": 0.8
+        }
+      ],
+      "missing_info": null,
+      "handover_summary": null
+    }
+  },
+  {
+    "id": "TCK-8803",
+    "customer_id": "CUST-1003",
+    "customer_name": "John Doe",
+    "subject": "Fiber cable cut by excavation construction crew - Urgent outage",
+    "status": "escalated",
+    "decision_type": "ESCALATE",
+    "confidence_score": 0.41,
+    "priority": "Critical",
+    "created_at": "2026-09-05T09:45:00Z",
+    "updated_at": "2026-09-05T14:07:11.399798",
+    "messages": [
+      {
+        "sender": "customer",
+        "text": "A construction excavator physically severed my fiber drop cable outside my house. There is no light signal, and I need a technician dispatched right away and a credit for lost working hours!",
+        "timestamp": "09:45:00"
+      },
+      {
+        "sender": "customer",
+        "text": "internet was t low",
+        "timestamp": "14:06:43"
+      },
+      {
+        "sender": "customer",
+        "text": "ok",
+        "timestamp": "14:07:11"
+      }
+    ],
+    "ai_resolution": {
+      "grounded_answer": null,
+      "citations": [],
+      "missing_info": null,
+      "handover_summary": {
+        "issue": "ok",
+        "customer_status": "John Doe | Plan: Fiber 500 Mbps | Status: Active | Billing: Paid",
+        "what_we_know": [
+          "Physical fiber drop line cut outside premise",
+          "Optical signal power reads 0 dBm (No Light)",
+          "Router WAN light is completely Off"
+        ],
+        "what_was_tried": [
+          "Automated line telemetry test confirmed complete break at drop cable level"
+        ],
+        "ai_assessment": "Physical infrastructure damage detected. Low KB match confidence (41%). Outside normal self-service resolution.",
+        "action": "Assign Level-2 Field Splicing Technician for immediate drop cable repair."
+      }
+    }
+  },
+  {
+    "id": "TCK-43C0",
+    "customer_id": "CUST-1001",
+    "customer_name": "Arun Kumar",
+    "subject": "Optical Red light blinking on router",
+    "status": "pending_approval",
+    "decision_type": "RESOLVE",
+    "confidence_score": 0.94,
+    "priority": "High",
+    "created_at": "2026-09-05T14:35:11.515557",
+    "updated_at": "2026-09-05T14:35:11.515563",
+    "messages": [
+      {
+        "sender": "customer",
+        "text": "[Broadband Connection] Since 8 AM my router light is blinking red and internet is offline",
+        "timestamp": "14:35:11"
+      }
+    ],
+    "ai_resolution": {
+      "grounded_answer": "Hello Arun Kumar,\n\nYour Fiber 200 Mbps plan is active and there is no recorded area outage.\n\nYour router WAN light is currently: **Blinking Red**.\n\nPlease restart your router (power off for 30s) and check the optical cable connection.\n\nSource: KB-102 \u2014 KB-102: Broadband Connection Troubleshooting (2. Power Cycle Sequence)",
+      "citations": [
+        {
+          "article_id": "KB-102",
+          "title": "KB-102: Broadband Connection Troubleshooting",
+          "section": "2. Power Cycle Sequence",
+          "relevance_score": 0.75
+        }
+      ],
+      "missing_info": null,
+      "handover_summary": null
+    }
+  },
+  {
+    "id": "TCK-A6D2",
+    "customer_id": "CUST-1005",
+    "customer_name": "Vikram Mehta",
+    "subject": "Broadband light blinking red and disconnects",
+    "status": "pending_approval",
+    "decision_type": "RESOLVE",
+    "confidence_score": 0.94,
+    "priority": "High",
+    "created_at": "2026-09-05T14:59:00.296752",
+    "updated_at": "2026-09-05T14:59:00.296760",
+    "messages": [
+      {
+        "sender": "customer",
+        "text": "[Broadband Connection] My Wi-Fi keeps disconnecting every 5 minutes and router LED is blinking red.",
+        "timestamp": "14:59:00"
+      }
+    ],
+    "ai_resolution": {
+      "grounded_answer": "Hello Vikram Mehta,\n\nYour Fiber 500 Mbps plan is active and there is no recorded area outage.\n\nYour router WAN light is currently: **Solid Green**.\n\nPlease restart your router (power off for 30s) and check the optical cable connection.\n\nSource: KB-102 \u2014 KB-102: Broadband Connection Troubleshooting (2. Power Cycle Sequence)",
+      "citations": [
+        {
+          "article_id": "KB-102",
+          "title": "KB-102: Broadband Connection Troubleshooting",
+          "section": "2. Power Cycle Sequence",
+          "relevance_score": 0.68
+        }
+      ],
+      "missing_info": null,
+      "handover_summary": null
+    }
+  }
+]

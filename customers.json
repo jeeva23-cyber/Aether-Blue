@@ -1,0 +1,122 @@
+[
+  {
+    "id": "CUST-1001",
+    "name": "Arun Kumar",
+    "email": "arun.kumar@example.com",
+    "phone": "+91 98765 43210",
+    "plan": "Fiber 200 Mbps",
+    "plan_type": "Broadband",
+    "monthly_fee": "$59.99",
+    "account_status": "Active",
+    "payment_status": "Paid",
+    "last_payment_date": "2026-08-28",
+    "telemetry": {
+      "line_status": "Degraded",
+      "wan_light": "Blinking Red",
+      "power_status": "On",
+      "router_model": "NexFiber Wi-Fi 6 Router",
+      "mac_address": "74:AC:B9:12:34:56",
+      "signal_dbm": "-28 dBm (Poor)",
+      "uptime_hours": 142,
+      "outage_in_area": false
+    },
+    "previous_tickets_count": 2,
+    "address": "42 Marathahalli Main Rd, Bengaluru, KA"
+  },
+  {
+    "id": "CUST-1002",
+    "name": "Priya Sharma",
+    "email": "priya.sharma@example.com",
+    "phone": "+91 98123 45678",
+    "plan": "GigaFiber 1 Gbps + Ultra Mobile 5G",
+    "plan_type": "Converged",
+    "monthly_fee": "$129.99",
+    "account_status": "Active",
+    "payment_status": "Pending Verification",
+    "last_payment_date": "2026-09-01",
+    "telemetry": {
+      "line_status": "Online",
+      "wan_light": "Solid Green",
+      "power_status": "On",
+      "router_model": "NexMesh Pro Wi-Fi 6E",
+      "mac_address": "88:DF:99:45:67:89",
+      "signal_dbm": "-14 dBm (Excellent)",
+      "uptime_hours": 890,
+      "outage_in_area": false
+    },
+    "previous_tickets_count": 0,
+    "address": "108 Indiranagar 100ft Rd, Bengaluru, KA"
+  },
+  {
+    "id": "CUST-1003",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1 415 555 0199",
+    "plan": "Fiber 500 Mbps",
+    "plan_type": "Broadband",
+    "monthly_fee": "$79.99",
+    "account_status": "Active",
+    "payment_status": "Paid",
+    "last_payment_date": "2026-08-15",
+    "telemetry": {
+      "line_status": "Offline (Physical Break)",
+      "wan_light": "Off",
+      "power_status": "On",
+      "router_model": "NexFiber standard Gateway",
+      "mac_address": "12:34:56:78:9A:BC",
+      "signal_dbm": "No Light (0 dBm)",
+      "uptime_hours": 0,
+      "outage_in_area": true
+    },
+    "previous_tickets_count": 5,
+    "address": "742 Evergreen Terrace, Springfield"
+  },
+  {
+    "id": "CUST-1004",
+    "name": "Sarah Jenkins",
+    "email": "sarah.j@example.com",
+    "phone": "+1 212 555 0144",
+    "plan": "Unlimited 5G Mobile Ultra",
+    "plan_type": "Mobile",
+    "monthly_fee": "$45.00",
+    "account_status": "Active",
+    "payment_status": "Overdue ($85.00)",
+    "last_payment_date": "2026-07-10",
+    "telemetry": {
+      "line_status": "Active Roaming",
+      "wan_light": "N/A",
+      "power_status": "N/A",
+      "router_model": "Mobile eSIM",
+      "mac_address": "N/A",
+      "signal_dbm": "5G Full",
+      "uptime_hours": 720,
+      "outage_in_area": false
+    },
+    "previous_tickets_count": 1,
+    "address": "350 5th Ave, New York, NY"
+  },
+  {
+    "id": "CUST-1005",
+    "name": "Vikram Mehta",
+    "email": "vikram.m@example.com",
+    "phone": "+91 99887 76655",
+    "plan": "Fiber 500 Mbps",
+    "plan_type": "Broadband",
+    "monthly_fee": ".99",
+    "account_status": "Active",
+    "payment_status": "Paid",
+    "last_payment_date": "2026-09-05",
+    "telemetry": {
+      "line_status": "Online",
+      "wan_light": "Solid Green",
+      "power_status": "On",
+      "router_model": "NexFiber Wi-Fi 6 Gateway",
+      "mac_address": "88:D8:2A:83",
+      "signal_dbm": "-18 dBm (Good)",
+      "uptime_hours": 12,
+      "outage_in_area": false
+    },
+    "previous_tickets_count": 0,
+    "address": "Villa 12, Palm Meadows, Whitefield"
+  }
+]
